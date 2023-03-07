@@ -10,7 +10,7 @@ import time
 
 
 # Initialize the camera
-cap = cv2.VideoCapture(0, cv2.CAP_V4L)
+cap = cv2.VideoCapture(0, cv2.CAP_ANY)
 
 
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -27,10 +27,11 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
 # Initialize the email parameters
 FROM_EMAIL = "oden.raspi@gmail.com"
-FROM_PASSWORD = "mmtxdccnqqococbb"
 
+f = open('notapasswordfileIswear.txt','r')
+lines=f.readlines()
+FROM_PASSWORD = f"{lines[0]}"
 
-# hirsjzelqzgqawxr
 
 TO_EMAIL = "vincenzo.scotto001@gmail.com"
 SUBJECT = "Human detected"
