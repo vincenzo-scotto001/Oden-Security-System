@@ -20,7 +20,7 @@ cap.set(cv2.CAP_PROP_FPS, int(60))
 # cascade_path = cv2.data.haarcascades + "haarcascade_fullbody.xml"
 # body_cascade = cv2.CascadeClassifier('haarcascade_fullbody.xml')
 
-# Load the HOG Descriptor for human detection, better than Haar but a lil slower
+# Load the HOG Descriptor for human detection
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
