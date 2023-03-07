@@ -10,7 +10,7 @@ import time
 
 
 # Initialize the camera
-cap = cv2.VideoCapture(0, cv2.CAP_ANY)
+cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
 # setting frame rate, and quality of picture
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -134,5 +134,7 @@ def video_feed():
     return Response(video_streaming(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='192.168.0.130', port=8000, debug=False)
+    f = open('forsurenotmyIP.txt','r')
+    lines=f.readlines()
+    app.run(host=f'{lines[0]}', port=8000, debug=False)
 
