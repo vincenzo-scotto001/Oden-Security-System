@@ -12,9 +12,9 @@ import time
 # Initialize the camera
 cap = cv2.VideoCapture(0, cv2.CAP_ANY)
 
-
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+# setting frame rate, and quality of picture
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 cap.set(cv2.CAP_PROP_FPS, int(60))
 # Load the Haar Cascade classifier for human detection
 # cascade_path = cv2.data.haarcascades + "haarcascade_fullbody.xml"
@@ -28,6 +28,8 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 # Initialize the email parameters
 FROM_EMAIL = "oden.raspi@gmail.com"
 
+
+# you thought I would be crazy enough to put my password here didnt you?
 f = open('notapasswordfileIswear.txt','r')
 lines=f.readlines()
 FROM_PASSWORD = f"{lines[0]}"
@@ -116,8 +118,8 @@ def video_streaming():
         
         
         # Draw rectangles around the detected bodies
-        # for (x,y,w,h) in hog_bodies:
-        #     cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
+        for (x,y,w,h) in hog_bodies:
+            cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
 
         # Encode the frame as a JPEG image
         ret, buffer = cv2.imencode('.jpg', frame)
