@@ -127,7 +127,7 @@ def run_app():
         try:
             with open('forsurenotmyIP.txt', 'r') as f:
                 ip = f.readline().strip()
-            run_simple(ip, 8000, app, use_reloader=False, use_debugger=False)
+            run_simple("0.0.0.0", 8000, app, use_reloader=False, use_debugger=False)
         except Exception as e:
             logging.error(f"Server error: {e}")
             print(f"Server error occurred. Restarting in 5 seconds...")
